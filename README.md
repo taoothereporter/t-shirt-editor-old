@@ -1,2 +1,2 @@
-# t-shirts
+# taoothereporter.github.io
 Simple SPA
