@@ -5,131 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.6/fabric.min.js"></script>
-    <style>
-        html, body{ margin:0px; padding:0px; }
-        body{ display:block; width:100%; height:100%; }
-        #main{ display:block; width:80%; padding:50px 10%; height:300px; }
-    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.4.0/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script> -->
 </head>
 <body>
     <section class="section">
         <div class="container">
             <div class="columns">
                 <div class="column">
-                    <ul style="width: 135px; height: 810px; overflow: auto">
-                        <li>
-                            <img src="t-shirt.png" onclick="getTshirt(this)">
-                        </li>
-                        <li>
-                            <img src="t-shirt-1.png" onclick="getTshirt(this)">
-                        </li>
-                        <li>
-                            <img src="t-shirt-2.png" onclick="getTshirt(this)">
-                        </li>
-                        <li>
-                            <img src="t-shirt-3.png" onclick="getTshirt(this)">
-                        </li>
-                    </ul>
-                </div>
-                <div class="column">
                     <div class="card">
                         <div class="card-content">
-                            <canvas id="c1" width="1024" height="768"></canvas>
+                            <p class="buttons">
+                                <a class="button is-large" id="addImageModalDialog">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-globe"></i>
+                                    </span>
+                                </a>
+                                <a class="button is-large" id="removeSelectedObject">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-trash"></i>
+                                    </span>
+                                </a>
+                                <a class="button is-large" id="drawPolygon">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-draw-polygon"></i>
+                                    </span>
+                                </a>
+                                <a class="button is-large" id="clearViewport">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-broom"></i>
+                                    </span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="buttons">
+                                <!-- <a class="button is-large">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-tshirt"></i>
+                                    </span>
+                                </a> -->
+                                <!-- <a class="button is-large" id="setColor">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-palette"></i>
+                                    </span>
+                                </a> -->
+                                <input type='text' id="setColor" />
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="columns">
-                <div class="column">
-                    <button onclick="addRectangle(this)">Прямоугольник</button>
-                    <button onclick="addCircle(this)">Круг</button>
-                    <button onclick="groupObjs(this)">Объединить</button>
-                    <button onclick="addToMain(this)">На майку</button>
-                    <button onclick="clearCanvas(this)">Очистить</button>
-                </div>
-                <div class="column">
-                    <button onclick="deleteSelected(this)">Удалить</button>
-                    <button onclick="bringUp(this)">На слой выше</button>
-                    <button onclick="bringDown(this)">На слой ниже</button>
-                </div>
                 <div class="column">
                     <div class="card">
                         <div class="card-content">
-                            <canvas id="c2" width="1024" height="768"></canvas>
+                            <canvas id="c1" width="1000" height="700"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                        <ul style="width: 135px; height: 810px; overflow: auto">
-                            <li>
-                                <img id="foo" src="title.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-9.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-1.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-2.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-3.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-4.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-7.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-8.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <ul style="width: 135px; height: 810px; overflow: auto">
-                            <li>
-                                <img id="foo" src="title-33.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-37.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-42.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-35.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-29.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-11.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-13.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-6.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                            <li>
-                                <img id="foo" src="title-45.png" onclick="getSrc(this)" width="128" height="128">
-                            </li>
-                        </ul>
-                    </div>
-    
 
+                <!-- <div class="column">
+                    <nav class="panel">
+                        <p class="panel-heading">
+                            Слои
+                        </p>
+                        <a class="panel-block is-active">Базовый</a>
+                        <a class="panel-block">Слой 1</a>
+                        <a class="panel-block">Слой 2</a>
+                        <a class="panel-block">Слой 3</a>
+                    </nav>
+                </div> -->
             </div>
         </div>
-    
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Добавить изображение</p>
+                    <button class="delete" aria-label="close" id="closeImageModalDialog"></button>
+                </header>
+                <section class="modal-card-body">
+                    <input class="input" type="text" id="customImageURL" placeholder="Введите URL изображения">
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="addImageFromURL">Добавить</button>
+                    <button class="button" id="cancelImageModalDialog">Отмена</button>
+                </footer>
+            </div>
+        </div>        
     </section>
-
-
-    <script type="text/javascript" src="main.js"></script>
+    <!-- <script src="main.js"></script> -->
+    <script src="draw.js"></script>
 </body>
 </html>
