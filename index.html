@@ -40,6 +40,11 @@
                                         <i class="fa fa-draw-polygon"></i>
                                     </span>
                                 </a>
+                                <a class="button is-large" id="galleryDialog">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-image"></i>
+                                    </span>
+                                </a>
                                 <a class="button is-large" id="clearViewport">
                                     <span class="icon is-small">
                                         <i class="fa fa-broom"></i>
@@ -75,20 +80,31 @@
                     </div>
                 </div>
 
-                <!-- <div class="column">
+                <div class="column">
+                </div>
+
+                <div class="column">
                     <nav class="panel">
                         <p class="panel-heading">
                             Слои
                         </p>
-                        <a class="panel-block is-active">Базовый</a>
+                        <a class="panel-block custom-layer is-active" id="baseLayer">Базовый</a>
+                        <a class="panel-block custom-layer" id="newLayerButton">Новый</a>
+                        <!-- <a class="panel-block is-active">Базовый</a>
                         <a class="panel-block">Слой 1</a>
                         <a class="panel-block">Слой 2</a>
-                        <a class="panel-block">Слой 3</a>
+                        <a class="panel-block">Слой 3</a> -->
                     </nav>
-                </div> -->
+                    <nav class="panel layer-objects">
+                        <p class="panel-heading layer-objects-heading">
+                            Объекты
+                        </p>
+                        <!-- <a class="panel-block is-active">Майка</a> -->
+                    </nav>
+                </div>
             </div>
         </div>
-        <div class="modal">
+        <div class="modal imageLoadURLDialog">
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">
@@ -97,15 +113,110 @@
                 </header>
                 <section class="modal-card-body">
                     <input class="input" type="text" id="customImageURL" placeholder="Введите URL изображения">
+                    <div class="select">
+                        <select class="layer-list">
+                            <option class="layer-option" id="baseLayer">Базовый</option>
+                            <!-- <option>Select dropdown</option>
+                            <option>With options</option> -->
+                        </select>
+                    </div>                    
                 </section>
                 <footer class="modal-card-foot">
                     <button class="button is-success" id="addImageFromURL">Добавить</button>
                     <button class="button" id="cancelImageModalDialog">Отмена</button>
                 </footer>
             </div>
-        </div>        
+        </div>
+        <div class="modal galleryModalDialog">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Добавить слой</p>
+                    <button class="delete" aria-label="close" id="closeGalleryDialog"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div class="columns">
+                        <div class="column">
+                            <figure class="image is-square">
+                                <img src="title.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-1.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-2.png">
+                            </figure>
+                            <input  name="clipart"type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-3.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                        </div>
+                        <div class="column">
+                            <figure class="image is-square">
+                                <img src="title-4.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-5.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-6.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-7.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                        </div>
+                        <div class="column">
+                            <figure class="image is-square">
+                                <img src="title-8.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-9.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-10.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                            <figure class="image is-square">
+                                <img src="title-11.png">
+                            </figure>
+                            <input name="clipart" type="checkbox">
+                        </div>
+                    </div>
+                    <!-- <input class="input" type="text" id="customLayerTitle" placeholder="Введите имя нового слоя"> -->
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="addClipart">Добавить</button>
+                    <button class="button" id="cancelGalleryDialog">Отмена</button>
+                </footer>
+            </div>
+        </div>
+        <div class="modal layerModalDialog">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Добавить слой</p>
+                    <button class="delete" aria-label="close" id="closeLayerModalDialog"></button>
+                </header>
+                <section class="modal-card-body">
+                    <input class="input" type="text" id="customLayerTitle" placeholder="Введите имя нового слоя">
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" id="addLayer">Добавить</button>
+                    <button class="button" id="cancelLayerModalDialog">Отмена</button>
+                </footer>
+            </div>
+        </div>
     </section>
     <!-- <script src="main.js"></script> -->
-    <script src="main.js"></script>
+    <script src="draw.js"></script>
 </body>
 </html>
