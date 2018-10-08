@@ -466,6 +466,20 @@ $('#setColor').spectrum({
     }
 });
 
+
+$('#addText').on('click', function (){
+    var itext = new fabric.IText('This is a IText object', {
+        left: 100,
+        top: 150,
+        fill: '#D81B60',
+        strokeWidth: 2,
+        stroke: "#880E4F",
+    });
+
+    canvas.add(itext);
+});
+
+
 $('#galleryDialog').on('click', function (){
     $('.galleryModalDialog').addClass('is-active');
 });
