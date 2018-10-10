@@ -494,17 +494,15 @@ $('#cancelGalleryDialog').on('click', function (){
 
 $('#addClipart').on('click', function () {
     $("input[name='clipart']:checked").each(function () {
-        // checked.push(parseInt($(this).val()));
 
-        $('#addImageFromURL').on('click',function (){
-            fabric.Image.fromURL($('#customImageURL').val(), function (oImg) {
-                // console.log(selectedOption);
-                // oImg.id = selectedOption;
-                canvas.add(oImg);
-            });
+        fabric.Image.fromURL($(this).val(), function (oImg) {
+            oImg.scaleToWidth(570);
+            oImg.scaleToHeight(680);
 
-            $('#customImageURL').val('');
-            $('.modal').removeClass('is-active');
+            canvas.add(oImg);
         });
+
+        $('.galleryModalDialog').removeClass('is-active');
     });
+
 });
