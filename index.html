@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">    
+    <title>Document</title>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous">
+    </script>
+
+
+</head>
+<body>
+    <section class="section">
+        <center><h1>Конфигуратор изделий</h1></center>
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <p>Изделия</p>
+                    <div class="buttons">
+                        <button class="button" id="addItem">+</button>
+                        <button class="button" id="deleteItem">-</button>
+                    </div>
+                    <div class="select is-multiple">
+                        <select id="selectMenu1" multiple>
+                            <option selected>Item 1</option>
+                            <option>Item 2</option>
+                            <option>Item 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="column">
+                    <p>Разновидности</p>                    
+                    <div class="buttons">
+                        <button class="button" id="addModel">+</button>
+                        <button class="button" id="deleteItem">-</button>
+                    </div>
+                    <div class="select is-multiple">
+                        <select id="selectMenu2" multiple>
+                        </select>
+                    </div>
+                </div>
+                <div class="column">
+                    <p>Цвета</p>                    
+                    <div class="buttons">
+                        <button class="button" id="addColor">+</button>
+                        <button class="button" id="deleteColor">-</button>
+                    </div>
+                    <div class="select is-multiple">
+                        <select id="selectMenu3" multiple>
+                        </select>
+                    </div>                    
+                </div>
+                <div class="column">
+                    <p>Стороны</p>                    
+                    <div class="buttons">
+                        <button class="button" id="addSide">+</button>
+                        <button class="button" id="deleteSide">-</button>
+                    </div>
+                    <div class="select is-multiple">
+                        <select id="selectMenu4" multiple>
+                        </select>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal addItemDialog">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Добавить изделие</p>
+                <button class="delete" id="closeItemDialog" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static">
+                            Название изделия
+                        </a>
+                    </p>
+                    <p class="control">
+                        <input class="input" id="titleItem" type="text" placeholder="Введите название изделия ..." >
+                    </p>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Параметры</p>
+                    <div class="panel-block">
+                        <label class="checkbox">
+                            <input id="genderItem" type="checkbox">
+                                Пол
+                        </label>
+                    </div>
+                    <div class="panel-block">
+                        <label class="checkbox">
+                            <input id="ageItem" type="checkbox">
+                                Возраст
+                        </label>
+                    </div>
+                    <div class="panel-block">
+                        <label class="checkbox">
+                            <input id="sizeItem" type="checkbox">
+                                Размер одежды
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="file">
+                    <label class="file-label">
+                        <input id="fileItem" class="file-input" type="file" name="resume">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Загрузить миниатюру…
+                            </span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Описание</p>
+                    <div class="panel-block">
+                        <textarea id="descriptionItem" class="textarea" placeholder="Введите описание изделия ..."></textarea>
+                    </div>
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="saveItemDialog">Сохранить</button>
+                <button class="button" id="cancelItemDialog">Отмена</button>
+            </footer>
+        </div>
+    </div>
+
+
+    <div class="modal addModelDialog">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Добавить разновидность изделия</p>
+                <button class="delete" id="closeModelDialog" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static">
+                            Название рвзновидности
+                        </a>
+                    </p>
+                    <p class="control">
+                        <input class="input" id="titleModel" type="text" placeholder="Введите название разновидности ..." >
+                    </p>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Метод печати</p>
+                    <div class="panel-block">
+                        <label class="checkbox">
+                            <input id="plainPrint" type="checkbox">
+                                Прямая печать
+                        </label>
+                    </div>
+                    <div class="panel-block">
+                        <label class="checkbox">
+                            <input id="sublimPrint" type="checkbox">
+                                Сублимация
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="file">
+                    <label class="file-label">
+                        <input id="fileModel" class="file-input" type="file" name="resume">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Загрузить миниатюру…
+                            </span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Описание</p>
+                    <div class="panel-block">
+                        <textarea id="descriptionModel" class="textarea" placeholder="Введите описание изделия ..."></textarea>
+                    </div>
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="saveModelDialog">Сохранить</button>
+                <button class="button" id="cancelModelDialog">Отмена</button>
+            </footer>
+        </div>
+    </div>
+
+
+    <div class="modal addColorDialog">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Добавить цвет изделия</p>
+                <button class="delete" id="closeColorDialog" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static">
+                            Название цвета
+                        </a>
+                    </p>
+                    <p class="control">
+                        <input class="input" id="titleColor" type="text" placeholder="Введите название цвета ..." >
+                    </p>
+                </div>
+
+                <div class="file">
+                    <label class="file-label">
+                        <input id="fileColor" class="file-input" type="file" name="resume">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Загрузить миниатюру…
+                            </span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Описание</p>
+                    <div class="panel-block">
+                        <textarea id="descriptionColor" class="textarea" placeholder="Введите описание цвета ..."></textarea>
+                    </div>
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="saveColorDialog">Сохранить</button>
+                <button class="button" id="cancelColorDialog">Отмена</button>
+            </footer>
+        </div>
+    </div>
+
+    
+    <div class="modal addSideDialog">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Добавить сторону изделия</p>
+                <button class="delete" id="closeSideDialog" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+
+                <div class="field has-addons">
+                    <p class="control">
+                        <a class="button is-static">
+                            Название стороны
+                        </a>
+                    </p>
+                    <p class="control">
+                        <input class="input" id="titleSide" type="text" placeholder="Введите название стороны ..." >
+                    </p>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Слои</p>
+                    <div class="panel-block">
+                        <table class="table is-hoverable is-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="control">
+                                            <input class="input" id="titleLayer" type="text" placeholder="Новый слой ..." >
+                                        </p>                                        
+                                    </td>
+                                    <td>
+                                        <div class="file">
+                                            <label class="file-label">
+                                                <input id="fileSide" class="file-input" type="file" name="resume">
+                                                <span class="file-cta">
+                                                    <span class="file-icon">
+                                                        <i class="fas fa-upload"></i>
+                                                    </span>
+                                                    <span class="file-label">
+                                                        Загрузить
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="control">
+                                            <input class="input" id="titleLayer" type="text" placeholder="Основа" >
+                                        </p>                                        
+                                    </td>
+                                    <td>
+                                        <div class="file">
+                                            <label class="file-label">
+                                                <input id="fileSide" class="file-input" type="file" name="resume">
+                                                <span class="file-cta">
+                                                    <span class="file-icon">
+                                                        <i class="fas fa-upload"></i>
+                                                    </span>
+                                                    <span class="file-label">
+                                                        Загрузить
+                                                    </span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <button class="button">Добавить слой</button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Предпросмотр</p>
+                    <div class="panel-block">
+                        
+                    </div>
+                </div>
+
+                <div class="file">
+                    <label class="file-label">
+                        <input id="fileSide" class="file-input" type="file" name="resume">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Загрузить миниатюру…
+                            </span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="panel">
+                    <p class="panel-heading">Описание</p>
+                    <div class="panel-block">
+                        <textarea id="descriptionSide" class="textarea" placeholder="Введите описание цвета ..."></textarea>
+                    </div>
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="saveSideDialog">Сохранить</button>
+                <button class="button" id="cancelSideDialog">Отмена</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="main_1.js"></script>
+</body>
+</html>
