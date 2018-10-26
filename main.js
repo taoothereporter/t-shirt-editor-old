@@ -479,6 +479,9 @@ $('#addText').on('click', function (){
     canvas.add(itext);
 });
 
+$('#saveResult').on('click', function (){
+    console.log(JSON.stringify(canvas));
+});
 
 $('#galleryDialog').on('click', function (){
     $('.galleryModalDialog').addClass('is-active');
