@@ -495,6 +495,11 @@ $('#cancelGalleryDialog').on('click', function (){
     $('.galleryModalDialog').removeClass('is-active');
 });
 
+$('#exportResult').on('click', function (){
+    if(!window.localStorage){alert("This function is not supported by your browser."); return;}
+    window.open(canvas.toDataURL('png'));
+});
+
 $('#addClipart').on('click', function () {
     $("input[name='clipart']:checked").each(function () {
 
